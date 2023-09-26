@@ -30,13 +30,21 @@ class JobPost(models.Model):
     website = models.URLField(blank=True, null=True)
     city = models.CharField(max_length=100)
     post_description = models.TextField()
-    approved = models.BooleanField(default=False)
-    is_active = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
         ordering = ['created_at']
+
+
+class JobManager(models.Model):
+    id = models.AutoField(primary_key=True)
+    job = models.ForeignKey(JobPost, on_delete=models.CASCADE)
+    is_approved = models.BooleanField(default=False)
+    is_active = models.BooleanField(default=False)
+    job_period = models.IntegerField(blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
 
     
