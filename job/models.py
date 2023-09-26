@@ -33,8 +33,13 @@ class JobPost(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+
     class Meta:
         ordering = ['created_at']
+
+    def __str__(self):
+        return self.post_name
+
 
 
 class JobManager(models.Model):
@@ -45,6 +50,9 @@ class JobManager(models.Model):
     job_period = models.IntegerField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f"{self.job}"
 
 
     
@@ -60,6 +68,10 @@ class CarouselSlider(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
 
+    def __str__(self):
+        return self.name
+
+
 class AdPhotos(models.Model):
     id = models.AutoField(primary_key=True)
     client_name = models.CharField(max_length=200)
@@ -73,4 +85,6 @@ class AdPhotos(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     
+    def __str__(self):
+        return self.client_name
 

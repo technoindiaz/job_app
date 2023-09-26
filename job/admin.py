@@ -8,7 +8,7 @@ class JobPostAdmin(admin.ModelAdmin):
 
 
 
-
-
-
 admin.site.register(JobCategory)
+admin.site.register(JobManager)
+admin.site.register(CarouselSlider)
+admin.site.register(AdPhotos)
