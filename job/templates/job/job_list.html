@@ -1,0 +1,41 @@
+{% extends "job/base.html" %}
+
+{% block page_heading %}
+Job Post List
+{% endblock page_heading %}
+
+
+{% block page_content %}
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Job Name</th>
+      <th scope="col">Job Category</th>
+      <th scope="col">Phone</th>
+      <th scope="col">City</th>
+      <th scope="col">Approved</th>
+      <th scope="col">Post On</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for job in job_lists %}
+    <tr>
+      <th scope="row">{{ job.id }}</th>
+      <td><a href="#">{{ job.post_name }}</a></td>
+      <td>{{ job.job_category }}</td>
+      <td>{{ job.mobile_phone }}</td>
+      <td>{{ job.city }}</td>
+      <td>{{ job.approved }}</td>
+      <td>{{ job.created_at|date:"d-m-Y" }}</td>
+      <td><button type="button" class="btn btn-primary btn-sm"><i class="bi bi-pencil-square"></i></i></button></td>
+      
+      {% endfor %}
+    </tr>
+    
+      
+  </tbody>
+</table>
+{% endblock page_content %}
