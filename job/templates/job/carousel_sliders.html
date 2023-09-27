@@ -1,0 +1,49 @@
+{% extends "job/base.html" %}
+
+{% block page_heading %}
+Carousel Photos
+{% endblock page_heading %}
+
+{% block page_button %}
+<a href="{% url "job:add_sliders" %}"><button type="button" class="btn btn-primary"><i class="bi bi-plus"></i></i> Add Slider</button></a>
+{% endblock page_button %}
+
+
+{% block page_content %}
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Date</th>
+      <th scope="col">Slider Name</th>
+      <th scope="col">Thumbnail</th>
+      <th scope="col">Thumbnail</th>
+      <th scope="col">Thumbnail</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for slider in sliders %}
+    <tr>
+      <th scope="row">{{ slider.id }}</th>
+      <td>{{ slider.created_at|date:"d-m-Y" }}</td>
+      <td><a href="#">{{ slider.name }}</a></td>
+      <td><img src="{{ slider.image1.url }}" style="width:120px; height:50px;" alt="{{job.post_name}}"></td>
+      <td><img src="{{ slider.image2.url }}" style="width:120px; height:50px;" alt="{{job.post_name}}"></td>
+      <td><img src="{{ slider.image3.url }}" style="width:120px; height:50px;" alt="{{job.post_name}}"></td>
+      <td>
+        <a href="#" class="btn btn-warning btn-sm mb-2">Edit</a>
+        <form action="#" method="post">
+          {% csrf_token %}
+            <input type="submit"
+              class="btn btn-danger btn-sm" value="Delete">
+           
+        </form>
+    </td>
+    {% endfor %}
+    </tr>
+    
+      
+  </tbody>
+</table>
+{% endblock page_content %}

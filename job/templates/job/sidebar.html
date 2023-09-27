@@ -41,14 +41,14 @@
       </li><!-- End F.A.Q Page Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#">
+        <a class="nav-link collapsed" href="{% url "job:category-list" %}">
           <i class="bi bi-tags"></i>
           <span>Job Categories</span>
         </a>
       </li><!-- End Contact Page Nav -->
       
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#">
+        <a class="nav-link collapsed" href="{% url "job:sliders" %}">
           <i class="bi bi-images"></i>
           <span>Carousel Photos</span>
         </a>
@@ -61,15 +61,15 @@
         </a>
       </li><!-- End Contact Page Nav -->
 
-      <li class="nav-item">
+      {% comment %} <li class="nav-item">
         <a class="nav-link collapsed" href="#">
           <i class="bi bi-card-list"></i>
           <span>Reports</span>
         </a>
-      </li><!-- End Register Page Nav -->
+      </li><!-- End Register Page Nav --> {% endcomment %}
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#">
+        <a class="nav-link collapsed" href="{% url "job:logout" %}">
           <i class="bi bi-box-arrow-in-right"></i>
           <span>Logout</span>
         </a>

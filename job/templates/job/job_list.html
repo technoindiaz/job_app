@@ -21,7 +21,7 @@ Job Post List
       <th scope="col">Thumbnail</th>
       <th scope="col">Job Name</th>
       <th scope="col">Job Category</th>
-      <th scope="col">Phone</th>
+      <th scope="col">Mobile Number</th>
       <th scope="col">City</th>
       <th scope="col">Approved Status</th>
       <th scope="col">Action</th>
@@ -37,10 +37,14 @@ Job Post List
       <td>{{ job.job_category }}</td>
       <td>{{ job.mobile_phone }}</td>
       <td>{{ job.city }}</td>
-      <td>{{ job.approved }}</td>
+      {% if job.is_approved %}
+      <td class="text-center">&#10004;</td>
+    {% else %}
+    <td class="text-center">&#10008;</td>
+    {% endif %}
       <td>
-        <a href="{% url "job:update_job_post" job.id %}" class="btn btn-warning btn-sm">Edit</a>
-        <form action="{% url "job:delete_post" job.id %}" method="post" class="d-inline">
+        <a href="{% url 'job:job_post_update' job.pk %}" class="btn btn-warning btn-sm mb-2">Edit</a>
+        <form action="{% url "job:delete_post" job.id %}" method="post" >
           {% csrf_token %}
             <input type="submit"
               class="btn btn-danger btn-sm" value="Delete">

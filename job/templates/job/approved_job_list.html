@@ -28,7 +28,7 @@ Approved Job Post List {{job_post.id}}
     </tr>
   </thead>
   <tbody>
-    {% for job in job_lists %}
+    {% for job in approved_job_lists %}
     <tr>
       <th scope="row">{{ job.id }}</th>
       <td>{{ job.created_at|date:"d-m-Y" }}</td>
@@ -37,8 +37,19 @@ Approved Job Post List {{job_post.id}}
       <td>{{ job.job_category }}</td>
       <td>{{ job.mobile_phone }}</td>
       <td>{{ job.city }}</td>
-      <td>{{ job.approved }}</td>
-      <td><button type="button" class="btn btn-primary btn-sm"><i class="bi bi-pencil-square"></i></i></button></td>
+      {% if job.is_approved %}
+      <td class="text-center">&#10004;</td>
+    {% else %}
+    <td class="text-center">&#10008;</td>
+    {% endif %}
+    <td>
+      <a href="{% url 'job:job_post_update' job.pk %}" class="btn btn-warning btn-sm mb-2 ">Edit</a>
+      {% comment %} <form action="{% url "job:delete_post" job.id %}" method="post" >
+        {% csrf_token %}
+          <input type="submit"
+            class="btn btn-danger btn-sm" value="Delete">
+      </form> {% endcomment %}
+    </td>
       
       {% endfor %}
     </tr>
