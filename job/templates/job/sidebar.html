@@ -3,7 +3,7 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link " href="#">
+        <a class="nav-link " href="/">
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
         </a>
@@ -27,23 +27,37 @@
       <li class="nav-heading">Pages</li>
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#">
-          <i class="bi bi-person"></i>
-          <span>Jobs</span>
+        <a class="nav-link collapsed" href="{% url "job:job-list" %}">
+          <i class="bi bi-suitcase-lg"></i>
+          <span>Job Posts</span>
         </a>
       </li><!-- End Profile Page Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#">
+        <a class="nav-link collapsed" href="{% url 'job:approve-job-list'%}">
           <i class="bi bi-question-circle"></i>
-          <span>Job Pending List</span>
+          <span>Approved Job Post</span>
         </a>
       </li><!-- End F.A.Q Page Nav -->
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="#">
-          <i class="bi bi-envelope"></i>
-          <span>Contact</span>
+          <i class="bi bi-tags"></i>
+          <span>Job Categories</span>
+        </a>
+      </li><!-- End Contact Page Nav -->
+      
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#">
+          <i class="bi bi-images"></i>
+          <span>Carousel Photos</span>
+        </a>
+      </li><!-- End Contact Page Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#">
+          <i class="bi bi-phone-vibrate"></i>
+          <span>Mobile Ad Photos</span>
         </a>
       </li><!-- End Contact Page Nav -->
 

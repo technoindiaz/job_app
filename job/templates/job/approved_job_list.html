@@ -3,7 +3,7 @@
 {% load static %}
 
 {% block page_heading %}
-Job Post List
+Approved Job Post List {{job_post.id}}
 {% endblock page_heading %}
 
 {% block page_button %}
@@ -32,21 +32,13 @@ Job Post List
     <tr>
       <th scope="row">{{ job.id }}</th>
       <td>{{ job.created_at|date:"d-m-Y" }}</td>
-      <td><img src="{{ job.post_image.url }}" style="width:50px; height:50px;" alt="{{job.post_name}}"></td>
+      <td><img src="{{ job.post_image.url }}" style="width:50px; height:50px;"alt="{{job.post_name}}"></td>
       <td><a href="#">{{ job.post_name }}</a></td>
       <td>{{ job.job_category }}</td>
       <td>{{ job.mobile_phone }}</td>
       <td>{{ job.city }}</td>
       <td>{{ job.approved }}</td>
-      <td>
-        <a href="{% url "job:update_job_post" job.id %}" class="btn btn-warning btn-sm">Edit</a>
-        <form action="{% url "job:delete_post" job.id %}" method="post" class="d-inline">
-          {% csrf_token %}
-            <input type="submit"
-              class="btn btn-danger btn-sm" value="Delete">
-           
-        </form>
-      </td>
+      <td><button type="button" class="btn btn-primary btn-sm"><i class="bi bi-pencil-square"></i></i></button></td>
       
       {% endfor %}
     </tr>
