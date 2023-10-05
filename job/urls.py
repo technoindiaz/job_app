@@ -1,6 +1,8 @@
 from django.urls import path
 from job import views
-from .views import JobPostCreateListView
+from job import serializerviews
+from .serializerviews import JobPostCreateListView, CarouselView, JobPostsByCategoryAPIView
+
 
 app_name = 'job'
 
@@ -24,9 +26,22 @@ urlpatterns = [
     path('category/<int:pk>/update/', views.JobCategoryUpdateView.as_view(), name='category_update'),
     path('sliders', views.show_carousel_slider, name='sliders'),
     path('add_sliders', views.CarouselSliderCreateView.as_view(), name='add_sliders'),
+    # path('videsh-job', views.show_videsh_job, name='videsh-job'),
+    path('desh-job', views.show_desh_job, name='desh-job'),
+    path('school-job', views.show_school_job, name='school-job'),
+    path('hospital-job', views.show_hospital_job, name='hospital-job'),
+    path('resturant-job', views.show_resturant_job, name='resturant-job'),
+    path('medical-job', views.show_medical_store, name='medical-job'),
+
+    path('jobs/<int:job_category_id>/', views.show_videsh_job, name='jobs-by-category'),
     
 
+
     #===================APIS URLS==================
-    path('api', JobPostCreateListView.as_view()),
+    path('api/job-categories/', serializerviews.JobCategoryListCreateView.as_view(), name='job-category-list'),
+    path('api/job-posts-by-category/<int:category_id>/', JobPostsByCategoryAPIView.as_view(), name='job-posts-by-category'),
+    path('api/job-list', JobPostCreateListView.as_view()),
     path('<int:id>', JobPostCreateListView.as_view()),
+    path('api/carousel-slider', CarouselView.as_view(), name='api/carousel-slider'),
+    # path('api/category/', serializerviews.show_school_jobs)
 ]   

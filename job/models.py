@@ -18,7 +18,7 @@ class JobCategory(models.Model):
 def validate_image_size(value):
     max_size = 2 * 1024 * 1024  # 2 MB
     if value.size > max_size:
-        raise ValidationError(_('File size must be no more than 2 MB.'))
+        raise ValidationError(_('File size should not be more than 2 MB.'))
 
 class JobPost(models.Model):
     id = models.AutoField(primary_key=True)

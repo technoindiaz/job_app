@@ -25,20 +25,63 @@
 
 
       <li class="nav-heading">Pages</li>
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="{% url "job:job-list" %}">
-          <i class="bi bi-suitcase-lg"></i>
-          <span>Job Posts</span>
-        </a>
-      </li><!-- End Profile Page Nav -->
-
+      
       <li class="nav-item">
         <a class="nav-link collapsed" href="{% url 'job:approve-job-list'%}">
           <i class="bi bi-question-circle"></i>
           <span>Approved Job Post</span>
         </a>
       </li><!-- End F.A.Q Page Nav -->
+
+      <li class="nav-item">
+        {% comment %} <a class="nav-link collapsed" href="{% url "job:videsh-job" %}"> {% endcomment %}
+          <a class="nav-link collapsed" href="{% url 'job:jobs-by-category' job_category_id=4 %}">
+          <i class="bi bi-suitcase-lg"></i>
+          <span>Videsh me Job</span>
+        </a>
+      </li><!-- End Profile Page Nav -->
+      
+      
+      <li class="nav-item">
+        {% comment %} <a class="nav-link collapsed" href="{% url "job:desh-job" %}"> {% endcomment %}
+          <a class="nav-link collapsed" href="{% url 'job:jobs-by-category' job_category_id=5 %}">
+          <i class="bi bi-suitcase-lg"></i>
+          <span>Desh Me Job</span>
+        </a>
+      </li><!-- End Profile Page Nav -->
+
+      <li class="nav-item">
+        {% comment %} <a class="nav-link collapsed" href="{% url "job:school-job" %}"> {% endcomment %}
+          <a class="nav-link collapsed" href="{% url 'job:jobs-by-category' job_category_id=2 %}">
+          <i class="bi bi-book"></i>
+          <span>School Job</span>
+        </a>
+      </li><!-- End Profile Page Nav -->
+
+      <li class="nav-item">
+        {% comment %} <a class="nav-link collapsed" href="{% url "job:hospital-job" %}"> {% endcomment %}
+          <a class="nav-link collapsed" href="{% url 'job:jobs-by-category' job_category_id=1 %}">
+          <i class="bi bi-hospital"></i>
+          <span>Hospital Job</span>
+        </a>
+      </li><!-- End Profile Page Nav -->
+
+      <li class="nav-item">
+        {% comment %} <a class="nav-link collapsed" href="{% url "job:resturant-job" %}"> {% endcomment %}
+          <a class="nav-link collapsed" href="{% url 'job:jobs-by-category' job_category_id=3 %}">
+          <i class="bi bi-box2-heart"></i>
+          <span>Resturant Job</span>
+        </a>
+      </li><!-- End Profile Page Nav -->
+      
+      <li class="nav-item">
+        {% comment %} <a class="nav-link collapsed" href="{% url "job:medical-job" %}"> {% endcomment %}
+          <a class="nav-link collapsed" href="{% url 'job:jobs-by-category' job_category_id=9 %}">
+          <i class="bi bi-hospital"></i>
+          <span>Medical Store</span>
+        </a>
+      </li><!-- End Profile Page Nav -->
+
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="{% url "job:category-list" %}">

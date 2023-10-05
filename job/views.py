@@ -60,7 +60,11 @@ def Logout(request):
 
 @login_required(login_url = '/login')
 def dashboard(request):
-    return render(request, "job/dashboard.html")
+    job_lists = JobPost.objects.all()
+    context = {
+        'job_lists':job_lists
+    }
+    return render(request, "job/dashboard.html", context)
 
 
 def index(request):
@@ -169,60 +173,71 @@ class CarouselSliderCreateView(CreateView):
 
 
 
+def show_videsh_job(request, job_category_id):
+    job_category = JobCategory.objects.get(pk=job_category_id)
+    print(f"job_category_id: {job_category_id}")
+    print(f"job_category: {job_category}")
+    job_posts = JobPost.objects.filter(job_category=job_category_id)   
+    print(f"job_posts: {job_posts}") 
+    context = {
+        'job_category': job_category,
+        'job_posts': job_posts,
+    }
+    return render(request, "job/videsh_job_list.html", context)
 
 
+def show_desh_job(request, job_category_id):
+    job_category = JobCategory.objects.get(pk=job_category_id)
+    print(f"job_category_id: {job_category_id}")
+    print(f"job_category: {job_category}")
+    job_posts = JobPost.objects.filter(job_category=job_category_id)   
+    print(f"job_posts: {job_posts}") 
+    context = {
+        'job_category': job_category,
+        'job_posts': job_posts,
+    }
+    return render(request, "job/desh_job.html", context)
 
 
+def show_school_job(request, job_category_id):
+    job_category = JobCategory.objects.get(pk=job_category_id)
+    job_posts = JobPost.objects.filter(job_category=job_category_id)   
+    print(f"job_posts: {job_posts}") 
+    context = {
+        'job_category': job_category,
+        'job_posts': job_posts,
+    }
+    return render(request, "job/school_job.html", context)
 
 
+def show_hospital_job(request, job_category_id):
+    job_category = JobCategory.objects.get(pk=job_category_id)
+    job_posts = JobPost.objects.filter(job_category=job_category_id)   
+    context = {
+        'job_category': job_category,
+        'job_posts': job_posts,
+    }
+    return render(request, "job/hospital_job.html", context)
 
 
+def show_resturant_job(request, job_category_id):
+    job_category = JobCategory.objects.get(pk=job_category_id)
+    job_posts = JobPost.objects.filter(job_category=job_category_id)    
+    context = {
+        'job_category': job_category,
+        'job_posts': job_posts,
+    }
+    return render(request, "job/resturant_job.html", context)
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#==================== API Views ===================#
-from rest_framework import generics
-from rest_framework.response import Response
-from rest_framework.decorators import api_view
-
-from .serializers import JobPostSerializer
-
-class JobPostCreateListView(generics.ListCreateAPIView):
-    queryset = JobPost.objects.all()
-    serializer_class = JobPostSerializer
-
-
-class JobPostUpdateDelete(generics.RetrieveUpdateDestroyAPIView):
-    queryset = JobPost.objects.all()
-    serializer_class = JobPostSerializer
+def show_medical_store(request, job_category_id):
+    job_category = JobCategory.objects.get(pk=job_category_id)
+    # print(f"job_category_id: {job_category_id}")
+    # print(f"job_category: {job_category}")
+    job_posts = JobPost.objects.filter(job_category=job_category_id)   
+    # print(f"job_posts: {job_posts}") 
+    context = {
+        'job_category': job_category,
+        'job_posts': job_posts,
+    }
+    return render(request, "job/medical_store.html", context)

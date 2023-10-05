@@ -1,15 +1,18 @@
 {% extends "job/base.html" %}
 
-{% block page_heading %}
+{% load static %}
 
-Dashboard
+{% block page_heading %}
+{{ job_category.job_category_name }} Job List
 {% endblock page_heading %}
 
-{% block page_button %}
+{% comment %} {% block page_button %}
 <a href="{% url "job:create_job_post" %}"><button type="button" class="btn btn-primary"><i class="bi bi-plus"></i></i> Add Job</button></a>
-{% endblock page_button %}
+{% endblock page_button %} {% endcomment %}
+
 
 {% block page_content %}
+
 <table class="table">
   <thead>
     <tr>
@@ -17,7 +20,6 @@ Dashboard
       <th scope="col">Date</th>
       <th scope="col">Thumbnail</th>
       <th scope="col">Job Name</th>
-      <th scope="col">Job Category</th>
       <th scope="col">Mobile Number</th>
       <th scope="col">City</th>
       <th scope="col">Approved Status</th>
@@ -25,13 +27,13 @@ Dashboard
     </tr>
   </thead>
   <tbody>
-    {% for job in job_lists %}
+    {% for job in job_posts %}
     <tr>
       <th scope="row">{{ job.id }}</th>
       <td>{{ job.created_at|date:"d-m-Y" }}</td>
       <td><img src="{{ job.post_image.url }}" style="width:50px; height:50px;" alt="{{job.post_name}}"></td>
       <td><a href="#">{{ job.post_name }}</a></td>
-      <td>{{ job.job_category }}</td>
+      {% comment %} <td>{{ job.job_category }}</td> {% endcomment %}
       <td>{{ job.mobile_phone }}</td>
       <td>{{ job.city }}</td>
       {% if job.is_approved %}
@@ -51,8 +53,6 @@ Dashboard
       
       {% endfor %}
     </tr>
-    
-      
   </tbody>
 </table>
 {% endblock page_content %}
