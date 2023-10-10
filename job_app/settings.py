@@ -140,11 +140,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
-        'rest_framework.permissions.DjangoModelPermissions',
-        'rest_framework.permissions.AllowAny',
-    )
+    'DEFAULT_AUTHENTICATION_CLASSES': [],
 }
 
 
@@ -152,7 +148,8 @@ LOGIN_REDIRECT_URL = '/dashboard/'
 
 
 CORS_ALLOWED_ORIGINS = [
-    'http://127.0.0.1:58646',  
+    'http://127.0.0.1:58646', 
+    'https://technoindiaz.pythonanywhere.com', 
 ]
 
 CORS_ALLOW_ALL_ORIGINS = True
