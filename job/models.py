@@ -57,6 +57,35 @@ class JobPost(models.Model):
 #         return f"{self.job}"
 
 
+VIDESH_JOB_CATEGORY = (
+    ('CI', 'Client Interview'),
+    ('CS', 'CV Selection'),
+    ('TI', 'Telephonic Interview'),
+    ('LH', 'License Holder'),
+)
+
+class VideshJobPost(models.Model):
+    id = models.AutoField(primary_key=True)
+    job_category = models.CharField(choices= VIDESH_JOB_CATEGORY, max_length=100, null=True, blank=True)
+    post_name = models.CharField(max_length=200)
+    post_image = models.ImageField(upload_to='job_posts', validators=[validate_image_size])
+    whatsapp_phone = models.IntegerField(blank=True, null=True)
+    mobile_phone = models.IntegerField()
+    website = models.URLField(blank=True, null=True)
+    city = models.CharField(max_length=100)
+    post_description = models.TextField()
+    is_approved = models.BooleanField(default=False, null=True, blank=True)
+    is_active = models.BooleanField(default=False, null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+
+    class Meta:
+        ordering = ['created_at']
+
+    def __str__(self):
+        return self.post_name
+
     
 
 

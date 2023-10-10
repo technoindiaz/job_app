@@ -35,6 +35,7 @@ urlpatterns = [
 
     path('jobs/<int:job_category_id>/', views.show_videsh_job, name='jobs-by-category'),
     
+    
 
 
     #===================APIS URLS==================
@@ -44,5 +45,10 @@ urlpatterns = [
     path('<int:id>', JobPostCreateListView.as_view()),
     path('api/carousel-slider', CarouselView.as_view(), name='api/carousel-slider'),
     # path('api/category/', serializerviews.show_school_jobs)
-    path('api/create_job_post/', serializerviews.create_job_post, name='create_job_post'),
+    path('api/create_job_post/', serializerviews.create_job_post, name='api_create_job_post'),
+    path('api/videsh_job_list', serializerviews.videsh_job_list),
+    path('api/client-interview/', serializerviews.ClientInterviewJobPostList.as_view(), name='client-interview-job-list'),
+    path('api/cv-selection/', serializerviews.CVSelectionJobPostList.as_view(), name='cv-selection-job-list'),
+    path('api/telephonic-interview/', serializerviews.TelephonicInterviewJobPostList.as_view(), name='telephonic-interview-job-list'),
+    path('api/license-holder/', serializerviews.LicenseHolderJobPostList.as_view(), name='license-holder-job-list'),
 ]   

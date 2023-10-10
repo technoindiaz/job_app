@@ -8,21 +8,9 @@
           <span>Dashboard</span>
         </a>
       </li><!-- End Dashboard Nav -->
-<!-- 
-      <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-menu-button-wide"></i><span>Components</span><i class="bi bi-chevron-down ms-auto"></i>
-        </a>
-        <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-          <li>
-            <a href="components-alerts.html">
-              <i class="bi bi-circle"></i><span>Alerts</span>
-            </a>
-          </li>
-        </ul>
-      </li>
-      End Components Nav -->
 
+      
+      
 
       <li class="nav-heading">Pages</li>
 
@@ -33,28 +21,49 @@
         </a>
       </li><!-- End F.A.Q Page Nav -->
 
-      <li class="nav-item">
-        {% comment %} <a class="nav-link collapsed" href="{% url "job:videsh-job" %}"> {% endcomment %}
-          <a class="nav-link collapsed" href="{% url 'job:jobs-by-category' job_category_id=4 %}">
-          <i class="bi bi-suitcase-lg"></i>
-          <span>Videsh me Job</span>
-        </a>
-      </li><!-- End Profile Page Nav -->
       
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-airplane"></i></i><span>विदेश में जॉब</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="components-alerts.html">
+              <i class="bi bi-circle"></i><span>Client Interview</span>
+            </a>
+          </li>
+        </ul>
+        <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="components-alerts.html">
+              <i class="bi bi-circle"></i><span>CV Selection</span>
+            </a>
+          </li>
+        </ul>
+        <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="components-alerts.html">
+              <i class="bi bi-circle"></i><span>Zoom/ Telephonic</span>
+            </a>
+          </li>
+        </ul>
+        <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="components-alerts.html">
+              <i class="bi bi-circle"></i><span>Licence Holder</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+
+      
+
       
       <li class="nav-item">
         {% comment %} <a class="nav-link collapsed" href="{% url "job:desh-job" %}"> {% endcomment %}
           <a class="nav-link collapsed" href="{% url 'job:jobs-by-category' job_category_id=5 %}">
           <i class="bi bi-suitcase-lg"></i>
-          <span>Desh Me Job</span>
-        </a>
-      </li><!-- End Profile Page Nav -->
-
-      <li class="nav-item">
-        {% comment %} <a class="nav-link collapsed" href="{% url "job:school-job" %}"> {% endcomment %}
-          <a class="nav-link collapsed" href="{% url 'job:jobs-by-category' job_category_id=2 %}">
-          <i class="bi bi-book"></i>
-          <span>School Job</span>
+          <span>देश में जॉब </span>
         </a>
       </li><!-- End Profile Page Nav -->
 
@@ -62,47 +71,22 @@
         {% comment %} <a class="nav-link collapsed" href="{% url "job:hospital-job" %}"> {% endcomment %}
           <a class="nav-link collapsed" href="{% url 'job:jobs-by-category' job_category_id=1 %}">
           <i class="bi bi-hospital"></i>
-          <span>Hospital Job</span>
-        </a>
-      </li><!-- End Profile Page Nav -->
-
-      <li class="nav-item">
-        {% comment %} <a class="nav-link collapsed" href="{% url "job:resturant-job" %}"> {% endcomment %}
-          <a class="nav-link collapsed" href="{% url 'job:jobs-by-category' job_category_id=3 %}">
-          <i class="bi bi-box2-heart"></i>
-          <span>Resturant Job</span>
+          <span>हॉस्पिटल में जॉब</span>
         </a>
       </li><!-- End Profile Page Nav -->
       
-      <li class="nav-item">
-        {% comment %} <a class="nav-link collapsed" href="{% url "job:medical-job" %}"> {% endcomment %}
-          <a class="nav-link collapsed" href="{% url 'job:jobs-by-category' job_category_id=9 %}">
-          <i class="bi bi-hospital"></i>
-          <span>Medical Store</span>
-        </a>
-      </li><!-- End Profile Page Nav -->
+    
 
 
-      <li class="nav-item">
+      {% comment %} <li class="nav-item">
         <a class="nav-link collapsed" href="{% url "job:category-list" %}">
           <i class="bi bi-tags"></i>
           <span>Job Categories</span>
         </a>
-      </li><!-- End Contact Page Nav -->
+      </li> {% endcomment %}
       
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="{% url "job:sliders" %}">
-          <i class="bi bi-images"></i>
-          <span>Carousel Photos</span>
-        </a>
-      </li><!-- End Contact Page Nav -->
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#">
-          <i class="bi bi-phone-vibrate"></i>
-          <span>Mobile Ad Photos</span>
-        </a>
-      </li><!-- End Contact Page Nav -->
+      
+      
 
       {% comment %} <li class="nav-item">
         <a class="nav-link collapsed" href="#">
@@ -118,19 +102,7 @@
         </a>
       </li><!-- End Login Page Nav -->
 
-      {% comment %} <li class="nav-item">
-        <a class="nav-link collapsed" href="#">
-          <i class="bi bi-dash-circle"></i>
-          <span>Error 404</span>
-        </a>
-      </li><!-- End Error 404 Page Nav --> {% endcomment %}
-
-      {% comment %} <li class="nav-item">
-        <a class="nav-link collapsed" href="#">
-          <i class="bi bi-file-earmark"></i>
-          <span>Blank</span>
-        </a>
-      </li><!-- End Blank Page Nav --> {% endcomment %}
+      
 
     </ul>
 

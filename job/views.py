@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import JobPost, JobCategory, CarouselSlider
+from .models import JobPost, JobCategory, CarouselSlider, VideshJobPost
 from .forms import JobPostForm, JobCategoryForm, AddSliderForm
 from django.shortcuts import render, redirect
 from django.views.generic import CreateView, UpdateView
@@ -241,3 +241,42 @@ def show_medical_store(request, job_category_id):
         'job_posts': job_posts,
     }
     return render(request, "job/medical_store.html", context)
+
+
+def show_telephonic_job(request, job_category_id):
+    job_category = JobCategory.objects.get(pk=job_category_id)
+    print(f"job_category_id: {job_category_id}")
+    print(f"job_category: {job_category}")
+    job_posts = JobPost.objects.filter(job_category=job_category_id)   
+    print(f"job_posts: {job_posts}") 
+    context = {
+        'job_category': job_category,
+        'job_posts': job_posts,
+    }
+    return render(request, "job/", context)
+
+
+
+def show_license_holder_job(request, job_category_id):
+    job_category = JobCategory.objects.get(pk=job_category_id)
+    print(f"job_category_id: {job_category_id}")
+    print(f"job_category: {job_category}")
+    job_posts = JobPost.objects.filter(job_category=job_category_id)   
+    print(f"job_posts: {job_posts}") 
+    context = {
+        'job_category': job_category,
+        'job_posts': job_posts,
+    }
+    return render(request, "job/desh_job.html", context)
+
+
+
+def client_interview_posts(request):
+    job_posts = VideshJobPost.objects.filter(job_category='CI')
+    return render(request, 'client_interview_posts.html', {'job_posts': job_posts})
+
+def cv_selection_posts(request):
+    job_posts = VideshJobPost.objects.filter(job_category='CS')
+    return render(request, 'cv_selection_posts.html', {'job_posts': job_posts})
+
+
