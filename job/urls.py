@@ -44,4 +44,5 @@ urlpatterns = [
     path('<int:id>', JobPostCreateListView.as_view()),
     path('api/carousel-slider', CarouselView.as_view(), name='api/carousel-slider'),
     # path('api/category/', serializerviews.show_school_jobs)
+    path('api/create_job_post/', serializerviews.create_job_post, name='create_job_post'),
 ]   
