@@ -269,14 +269,64 @@ def show_license_holder_job(request, job_category_id):
     }
     return render(request, "job/desh_job.html", context)
 
+#=======================================================================================
+
+
+
+
+
+from django.shortcuts import render, get_object_or_404
+from .models import VideshJobPost
+
+from .forms import VideshJobPostForm
+
+def create_job_post(request):
+    if request.method == 'POST':
+        form = VideshJobPostForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('job_list')  # Redirect to the job list page after creating a post
+    else:
+        form = VideshJobPostForm()
+    return render(request, 'job/create_videsh_job_post.html', {'form': form})
+
+
+
+def videsh_job_list(request):
+    videsh_job_posts = VideshJobPost.objects.all()
+    return render(request, 'job/videsh_job_list.html', {'videsh_job_posts': videsh_job_posts})
+
+def videsh_job_detail(request, pk):
+    videsh_job_posts = get_object_or_404(VideshJobPost, pk=pk)
+    return render(request, 'job_detail.html', {'videsh_job_posts': videsh_job_posts})
+
+
+def update_videsh_job_post(request, pk):
+    videsh_job_post = get_object_or_404(VideshJobPost, pk=pk)
+    if request.method == 'POST':
+        form = VideshJobPostForm(request.POST, request.FILES, instance=videsh_job_post)
+        if form.is_valid():
+            form.save()
+            return redirect('job_list')  # Redirect to the job list page after updating the post
+    else:
+        form = VideshJobPostForm(instance=videsh_job_post)
+    return render(request, 'update_job_post.html', {'form': form})
 
 
 def client_interview_posts(request):
     job_posts = VideshJobPost.objects.filter(job_category='CI')
-    return render(request, 'client_interview_posts.html', {'job_posts': job_posts})
+    return render(request, 'job/client_interview_posts.html', {'job_posts': job_posts})
+
+def telephonic_interview_posts(request):
+    job_posts = VideshJobPost.objects.filter(job_category='TI')
+    return render(request, 'job/telephonic_interview_posts.html', {'job_posts': job_posts})
+
+
+def licence_holder_posts(request):
+    job_posts = VideshJobPost.objects.filter(job_category='LH')
+    return render(request, 'job/license_holder_posts.html', {'job_posts': job_posts})
+
 
 def cv_selection_posts(request):
     job_posts = VideshJobPost.objects.filter(job_category='CS')
-    return render(request, 'cv_selection_posts.html', {'job_posts': job_posts})
-
-
+    return render(request, 'job/cv_selection_posts.html', {'job_posts': job_posts})

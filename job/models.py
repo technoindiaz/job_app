@@ -3,6 +3,12 @@ from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
 
 # Create your models here.
+
+def validate_image_size(value):
+    max_size = 2 * 1024 * 1024  # 2 MB
+    if value.size > max_size:
+        raise ValidationError(_('File size should not be more than 2 MB.'))
+
 class JobCategory(models.Model):
     job_category_id = models.AutoField(primary_key=True)
     job_category_name = models.CharField(max_length=100)
@@ -15,10 +21,7 @@ class JobCategory(models.Model):
         return self.job_category_name
 
     
-def validate_image_size(value):
-    max_size = 2 * 1024 * 1024  # 2 MB
-    if value.size > max_size:
-        raise ValidationError(_('File size should not be more than 2 MB.'))
+
 
 class JobPost(models.Model):
     id = models.AutoField(primary_key=True)
@@ -57,6 +60,8 @@ class JobPost(models.Model):
 #         return f"{self.job}"
 
 
+
+
 VIDESH_JOB_CATEGORY = (
     ('CI', 'Client Interview'),
     ('CS', 'CV Selection'),
@@ -87,6 +92,27 @@ class VideshJobPost(models.Model):
         return self.post_name
 
     
+NORMAL_JOB_CATEGORY=(
+    ('DS', 'Desh Me Job'),
+    ('HS', 'Hospital Me Job'),
+)
+
+class NormalJobPost(models.Model):
+    job_category = models.CharField(choices= NORMAL_JOB_CATEGORY, max_length=100, null=True, blank=True)
+    post_name = models.CharField(max_length=200)
+    post_image = models.ImageField(upload_to='job_posts', validators=[validate_image_size])
+    whatsapp_phone = models.IntegerField(blank=True, null=True)
+    mobile_phone = models.IntegerField()
+    website = models.URLField(blank=True, null=True)
+    city = models.CharField(max_length=100)
+    post_description = models.TextField()
+    is_approved = models.BooleanField(default=False, null=True, blank=True)
+    is_active = models.BooleanField(default=False, null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+
+
 
 
 class CarouselSlider(models.Model):

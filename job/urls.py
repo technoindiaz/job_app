@@ -34,6 +34,17 @@ urlpatterns = [
     path('medical-job', views.show_medical_store, name='medical-job'),
 
     path('jobs/<int:job_category_id>/', views.show_videsh_job, name='jobs-by-category'),
+
+
+    #------------------------New URLS----------------------------------#
+    path('videsh_job/create/', views.create_job_post, name='videsh_job/create'),
+    path('videsh_job/list/', views.videsh_job_list, name='job_list'),
+    path('videsh_job/<int:pk>/', views.videsh_job_detail, name='job_detail'),
+    path('videsh_job/update/<int:pk>/', views.update_videsh_job_post, name='update_job_post'),
+    path('client_interview', views.client_interview_posts, name='client_interview'),
+    path('telephonic_interview', views.telephonic_interview_posts, name='telephonic_interview'),
+    path('licence_holder', views.licence_holder_posts, name='licence_holder'),
+    path('cv_selection', views.cv_selection_posts, name='cv_selection'),
     
     
 
@@ -51,4 +62,9 @@ urlpatterns = [
     path('api/cv-selection/', serializerviews.CVSelectionJobPostList.as_view(), name='cv-selection-job-list'),
     path('api/telephonic-interview/', serializerviews.TelephonicInterviewJobPostList.as_view(), name='telephonic-interview-job-list'),
     path('api/license-holder/', serializerviews.LicenseHolderJobPostList.as_view(), name='license-holder-job-list'),
+    path('api/normal-job-posts/', serializerviews.normal_job_post_list, name='normal-job-post-list'),
+    path('api/normal-job-posts/<int:pk>/', serializerviews.normal_job_post_detail, name='normal-job-post-detail'),
+    path('api/desh_me_job/', serializerviews.DeshMeJobPostList.as_view(), name='desh-me-job-list'),
+    path('api/hospital_me_job/', serializerviews.HosptialMeJobPostList.as_view(), name='hospital-me-job-list'),
+    
 ]   

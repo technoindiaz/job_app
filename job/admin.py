@@ -15,6 +15,10 @@ class JobCategoryAdmin(admin.ModelAdmin):
 class VideshJobPostAdmin(admin.ModelAdmin):
     list_display = ['post_name', 'job_category','post_image', 'whatsapp_phone', 'mobile_phone', 'website', 'city', 'post_description', 'is_approved', 'is_active','created_at', 'updated_at']
 
+@admin.register(NormalJobPost)
+class VideshJobPostAdmin(admin.ModelAdmin):
+    list_display = ['post_name', 'job_category','post_image', 'whatsapp_phone', 'mobile_phone', 'website', 'city', 'post_description', 'is_approved', 'is_active','created_at', 'updated_at']
+
 
 
 admin.site.register(CarouselSlider)

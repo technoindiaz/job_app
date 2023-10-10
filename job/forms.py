@@ -47,3 +47,13 @@ class AddSliderForm(forms.ModelForm):
             'image3': forms.FileInput(attrs={'class':'form-control'}),
             
                    }
+        
+
+
+from django import forms
+from .models import VideshJobPost
+
+class VideshJobPostForm(forms.ModelForm):
+    class Meta:
+        model = VideshJobPost
+        fields = '__all__' 
