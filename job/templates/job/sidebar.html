@@ -2,7 +2,7 @@
 
     <ul class="sidebar-nav" id="sidebar-nav">
 
-      <li class="nav-item">
+      <li class="nav-item {% if request.path == '/' %}active{% endif %}">
         <a class="nav-link collapsed" href="/">
           <i class="bi bi-speedometer"></i>
           <span>Dashboard</span>
@@ -14,86 +14,62 @@
 
       <li class="nav-heading">Pages</li>
 
-      <li class="nav-item">
+      {% comment %} <li class="nav-item">
         <a class="nav-link collapsed" href="{% url 'job:approve-job-list'%}">
           <i class="bi bi-question-circle"></i>
           <span>Approved Job Post</span>
         </a>
-      </li><!-- End F.A.Q Page Nav -->
+      </li> {% endcomment %}
 
       
       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-airplane"></i></i><span>विदेश में जॉब</span><i class="bi bi-chevron-down ms-auto"></i>
-        </a>
-        <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-          <li>
-            <a href="{% url "job:client_interview" %}">
-              <i class="bi bi-circle"></i><span>Client Interview</span>
-            </a>
+        <a class="nav-link collapsed" data-bs-toggle="collapse" data-bs-target="#components-nav" href="#">
+          <i class="bi bi-airplane"></i>
+          <span>विदेश में जॉब</span>
+          <i class="bi bi-chevron-down ms-auto"></i>
+      </a>
+      <ul id="components-nav" class="nav-content collapse">
+          <li class="nav-item">
+              <a href="{% url 'job:client_interview' %}">
+                  <i class="bi bi-circle"></i>
+                  <span>Client Interview</span>
+              </a>
           </li>
-        </ul>
-        <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-          <li>
-            <a href="{% url "job:cv_selection" %}">
-              <i class="bi bi-circle"></i><span>CV Selection</span>
-            </a>
+          <li class="nav-item">
+              <a href="{% url 'job:cv_selection' %}">
+                  <i class="bi bi-circle"></i>
+                  <span>CV Selection</span>
+              </a>
           </li>
-        </ul>
-        <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
             <a href="{% url "job:telephonic_interview" %}">
               <i class="bi bi-circle"></i><span>Zoom/ Telephonic</span>
             </a>
           </li>
-        </ul>
-        <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
             <a href="{% url "job:licence_holder" %}">
               <i class="bi bi-circle"></i><span>Licence Holder</span>
             </a>
           </li>
-        </ul>
-      </li>
-
-      
-
+          <!-- Add other child links here -->
+      </ul>
+  </li>
       
       <li class="nav-item">
-        {% comment %} <a class="nav-link collapsed" href="{% url "job:desh-job" %}"> {% endcomment %}
-          <a class="nav-link collapsed" href="{% url 'job:jobs-by-category' job_category_id=5 %}">
+        
+          <a class="nav-link collapsed" href="{% url 'job:normal_job_list' %}">
           <i class="bi bi-suitcase-lg"></i>
           <span>देश में जॉब </span>
         </a>
       </li><!-- End Profile Page Nav -->
 
       <li class="nav-item">
-        {% comment %} <a class="nav-link collapsed" href="{% url "job:hospital-job" %}"> {% endcomment %}
-          <a class="nav-link collapsed" href="{% url 'job:jobs-by-category' job_category_id=1 %}">
+        
+          <a class="nav-link collapsed" href="{% url 'job:show_hospital_jobs' %}">
           <i class="bi bi-hospital"></i>
           <span>हॉस्पिटल में जॉब</span>
         </a>
-      </li><!-- End Profile Page Nav -->
-      
-    
-
-
-      {% comment %} <li class="nav-item">
-        <a class="nav-link collapsed" href="{% url "job:category-list" %}">
-          <i class="bi bi-tags"></i>
-          <span>Job Categories</span>
-        </a>
-      </li> {% endcomment %}
-      
-      
-      
-
-      {% comment %} <li class="nav-item">
-        <a class="nav-link collapsed" href="#">
-          <i class="bi bi-card-list"></i>
-          <span>Reports</span>
-        </a>
-      </li><!-- End Register Page Nav --> {% endcomment %}
+      </li>
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="{% url "job:logout" %}">
@@ -107,3 +83,19 @@
     </ul>
 
   </aside>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Find all the child links
+        var childLinks = document.querySelectorAll('.nav-content a');
+
+        // Loop through each child link and check if it matches the current URL
+        childLinks.forEach(function (link) {
+            if (link.href === window.location.href) {
+                // Add the 'active' class to the parent collapsible section
+                var parentCollapsible = link.closest('.nav-content');
+                parentCollapsible.classList.add('show');
+            }
+        });
+    });
+</script>

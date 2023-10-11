@@ -1,19 +1,22 @@
 {% extends "job/base.html" %}
 
 {% block page_heading %}
-
 Dashboard
 {% endblock page_heading %}
 
 {% block page_button %}
-<a href="{% url "job:create_job_post" %}"><button type="button" class="btn btn-primary"><i class="bi bi-plus"></i></i> Add Job</button></a>
+{% comment %} <a href="#">
+    <button type="button" class="btn btn-primary">
+        <i class="bi bi-plus"></i> Add Job
+    </button>
+</a> {% endcomment %}
 {% endblock page_button %}
 
 {% block page_content %}
 <table class="table">
   <thead>
     <tr>
-      <th scope="col">#</th>
+      {% comment %} <th scope="col">#</th> {% endcomment %}
       <th scope="col">Date</th>
       <th scope="col">Thumbnail</th>
       <th scope="col">Job Name</th>
@@ -21,38 +24,33 @@ Dashboard
       <th scope="col">Mobile Number</th>
       <th scope="col">City</th>
       <th scope="col">Approved Status</th>
-      <th scope="col">Action</th>
+      {% comment %} <th scope="col">Action</th> {% endcomment %}
     </tr>
   </thead>
   <tbody>
     {% for job in job_lists %}
     <tr>
-      <th scope="row">{{ job.id }}</th>
+      {% comment %} <th scope="row">{{ job.id }}</th> {% endcomment %}
       <td>{{ job.created_at|date:"d-m-Y" }}</td>
-      <td><img src="{{ job.post_image.url }}" style="width:50px; height:50px;" alt="{{job.post_name}}"></td>
+      <td><img src="{{ job.post_image.url }}" style="width:50px; height:50px;" alt="{{ job.post_name }}"></td>
       <td><a href="#">{{ job.post_name }}</a></td>
       <td>{{ job.job_category }}</td>
       <td>{{ job.mobile_phone }}</td>
       <td>{{ job.city }}</td>
       {% if job.is_approved %}
       <td class="text-center">&#10004;</td>
-    {% else %}
-    <td class="text-center">&#10008;</td>
-    {% endif %}
-      <td>
-        <a href="{% url 'job:job_post_update' job.pk %}" class="btn btn-warning btn-sm mb-2">Edit</a>
-        <form action="{% url "job:delete_post" job.id %}" method="post" >
-          {% csrf_token %}
-            <input type="submit"
-              class="btn btn-danger btn-sm" value="Delete">
-           
-        </form>
-      </td>
-      
-      {% endfor %}
+      {% else %}
+      <td class="text-center">&#10008;</td>
+      {% endif %}
+        {% comment %} <td>
+          <a href="{% url 'job:update_normal_job_post' job.pk %}" class="btn btn-warning btn-sm mb-2">Edit</a>
+          <form action="{% url 'job:update_normal_job_post' job.id %}" method="post" >
+            {% csrf_token %}
+            <input type="submit" class="btn btn-danger btn-sm" value="Delete">
+          </form>
+        </td> {% endcomment %}
     </tr>
-    
-      
+    {% endfor %}
   </tbody>
 </table>
 {% endblock page_content %}

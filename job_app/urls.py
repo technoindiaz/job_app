@@ -20,7 +20,7 @@ from django.conf.urls.static import static
 from job_app import settings
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('suadmin/', admin.site.urls),
     path('', include('job.urls', namespace='job'),),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(settings.STATIC_URL,
                                                                                          document_root=settings.STATIC_ROOT)

@@ -2,11 +2,11 @@
 
 {% block page_heading %}
 
-Videsh Jobs
+Hospital Jobs
 {% endblock page_heading %}
 
 {% block page_button %}
-<a href="{% url "job:create_job_post" %}"><button type="button" class="btn btn-primary"><i class="bi bi-plus"></i></i> Add Job</button></a>
+<a href="{% url "job:create_normal_job_post" %}"><button type="button" class="btn btn-primary"><i class="bi bi-plus"></i></i> Add Job</button></a>
 {% endblock page_button %}
 
 {% block page_content %}
@@ -17,7 +17,7 @@ Videsh Jobs
       <th scope="col">Date</th>
       <th scope="col">Thumbnail</th>
       <th scope="col">Job Name</th>
-      <th scope="col">Job Category</th>
+      {% comment %} <th scope="col">Job Category</th> {% endcomment %}
       <th scope="col">Mobile Number</th>
       <th scope="col">City</th>
       <th scope="col">Approved Status</th>
@@ -25,13 +25,13 @@ Videsh Jobs
     </tr>
   </thead>
   <tbody>
-    {% for job in videsh_job_posts %}
+    {% for job in hospital_jobs %}
     <tr>
       <th scope="row">{{ job.id }}</th>
       <td>{{ job.created_at|date:"d-m-Y" }}</td>
       <td><img src="{{ job.post_image.url }}" style="width:50px; height:50px;" alt="{{job.post_name}}"></td>
       <td><a href="#">{{ job.post_name }}</a></td>
-      <td>{{ job.job_category }}</td>
+      {% comment %} <td>{{ job.job_category }}</td> {% endcomment %}
       <td>{{ job.mobile_phone }}</td>
       <td>{{ job.city }}</td>
       {% if job.is_approved %}
@@ -40,8 +40,8 @@ Videsh Jobs
     <td class="text-center">&#10008;</td>
     {% endif %}
       <td>
-        <a href="{% url 'job:update_videsh_job_post' job.pk %}" class="btn btn-warning btn-sm mb-2">Edit</a>
-        <form action="{% url "job:delete_post" job.id %}" method="post" >
+        <a href="{% url 'job:update_normal_job_post' job.pk %}" class="btn btn-warning btn-sm mb-2">Edit</a>
+        <form action="{% url "job:delete_normal_job_post" job.pk %}" method="post" >
           {% csrf_token %}
             <input type="submit"
               class="btn btn-danger btn-sm" value="Delete">

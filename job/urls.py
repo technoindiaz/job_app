@@ -11,40 +11,27 @@ urlpatterns = [
     path("register/", views.Register, name="register"),
     path("login/", views.Login, name="login"),
     path("logout/", views.Logout, name="logout"),
-
     path('index', views.index, name='index'),
     path('', views.dashboard, name='dashboard'), 
-    # path('job/create/', views.create_job_post, name='create_job_post'),
-    path('create_job_post', views.CreateJobPost.as_view(), name='create_job_post'),
-    path('job_post/<int:pk>/update/', views.JobPostUpdateView.as_view(), name='job_post_update'),
     
-    path('job-list', views.job_list, name='job-list'), 
-    path('approve-job-list', views.approved_job_list, name='approve-job-list'),
-    path('delete_post/<int:id>/', views.delete_job_post, name='delete_post'), 
-    path('category-list', views.show_job_categories, name='category-list'),
-    path('create_job_category', views.JobCategoryCreateView.as_view(), name='create_job_category'),
-    path('category/<int:pk>/update/', views.JobCategoryUpdateView.as_view(), name='category_update'),
-    path('sliders', views.show_carousel_slider, name='sliders'),
-    path('add_sliders', views.CarouselSliderCreateView.as_view(), name='add_sliders'),
-    # path('videsh-job', views.show_videsh_job, name='videsh-job'),
-    path('desh-job', views.show_desh_job, name='desh-job'),
-    path('school-job', views.show_school_job, name='school-job'),
-    path('hospital-job', views.show_hospital_job, name='hospital-job'),
-    path('resturant-job', views.show_resturant_job, name='resturant-job'),
-    path('medical-job', views.show_medical_store, name='medical-job'),
-
-    path('jobs/<int:job_category_id>/', views.show_videsh_job, name='jobs-by-category'),
-
-
     #------------------------New URLS----------------------------------#
-    path('videsh_job/create/', views.create_job_post, name='videsh_job/create'),
-    path('videsh_job/list/', views.videsh_job_list, name='job_list'),
+    path('approve-job-list', views.approved_job_list, name='approve-job-list'),
+    path('create_videsh_job', views.create_job_post, name='create_videsh_job'),
+    path('videsh_job_list/', views.videsh_job_list, name='videsh_job_list'),
     path('videsh_job/<int:pk>/', views.videsh_job_detail, name='job_detail'),
-    path('videsh_job/update/<int:pk>/', views.update_videsh_job_post, name='update_job_post'),
+    path('videsh_job/update/<int:pk>/', views.update_videsh_job_post, name='update_videsh_job_post'),
     path('client_interview', views.client_interview_posts, name='client_interview'),
+    path('delete_videsh_job_post/<int:pk>/', views.delete_videsh_job_post, name='delete_videsh_job_post'),
     path('telephonic_interview', views.telephonic_interview_posts, name='telephonic_interview'),
     path('licence_holder', views.licence_holder_posts, name='licence_holder'),
     path('cv_selection', views.cv_selection_posts, name='cv_selection'),
+    path('job/create/', views.create_normal_job_post, name='create_normal_job_post'),
+    path('normal_job_list', views.normal_job_list, name='normal_job_list'),
+    path('job/<int:pk>/', views.normal_job_detail, name='normal_job_detail'),
+    path('update_normal_job_post/<int:pk>/', views.update_normal_job_post, name='update_normal_job_post'),
+    path('delete_normal_job_post/<int:pk>/', views.delete_normal_job_post, name='delete_normal_job_post'),
+    path('show_hospital_jobs', views.show_hospital_jobs, name='show_hospital_jobs'),
+    path('create_normal_job_post', views.create_normal_job_post, name='create_normal_job_post'),
     
     
 
@@ -68,3 +55,58 @@ urlpatterns = [
     path('api/hospital_me_job/', serializerviews.HosptialMeJobPostList.as_view(), name='hospital-me-job-list'),
     
 ]   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# path('job/create/', views.create_job_post, name='create_job_post'),
+    # path('create_job_post', views.CreateJobPost.as_view(), name='create_job_post'),
+    # path('job_post/<int:pk>/update/', views.JobPostUpdateView.as_view(), name='job_post_update'),
+    
+    # path('job-list', views.job_list, name='job-list'), 
+    # 
+    # path('delete_post/<int:id>/', views.delete_job_post, name='delete_post'), 
+    # path('category-list', views.show_job_categories, name='category-list'),
+    # path('create_job_category', views.JobCategoryCreateView.as_view(), name='create_job_category'),
+    # path('category/<int:pk>/update/', views.JobCategoryUpdateView.as_view(), name='category_update'),
+    # path('sliders', views.show_carousel_slider, name='sliders'),
+    # path('add_sliders', views.CarouselSliderCreateView.as_view(), name='add_sliders'),
+    # # path('videsh-job', views.show_videsh_job, name='videsh-job'),
+    # # path('desh-job', views.show_desh_job, name='desh-job'),
+    # # path('school-job', views.show_school_job, name='school-job'),
+    # # path('hospital-job', views.show_hospital_job, name='hospital-job'),
+    # # path('resturant-job', views.show_resturant_job, name='resturant-job'),
+    # # path('medical-job', views.show_medical_store, name='medical-job'),
+
+    # # path('jobs/<int:job_category_id>/', views.show_videsh_job, name='jobs-by-category'),
+

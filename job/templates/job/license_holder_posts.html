@@ -1,18 +1,15 @@
 {% extends "job/base.html" %}
 
-{% load static %}
-
 {% block page_heading %}
-{{ job_category.job_category_name }} Job List
+
+License Interview Jobs
 {% endblock page_heading %}
 
-{% comment %} {% block page_button %}
-<a href="{% url "job:create_job_post" %}"><button type="button" class="btn btn-primary"><i class="bi bi-plus"></i></i> Add Job</button></a>
-{% endblock page_button %} {% endcomment %}
-
+{% block page_button %}
+<a href="{% url "job:create_videsh_job" %}"><button type="button" class="btn btn-primary"><i class="bi bi-plus"></i></i> Add Job</button></a>
+{% endblock page_button %}
 
 {% block page_content %}
-
 <table class="table">
   <thead>
     <tr>
@@ -20,6 +17,7 @@
       <th scope="col">Date</th>
       <th scope="col">Thumbnail</th>
       <th scope="col">Job Name</th>
+      {% comment %} <th scope="col">Job Category</th> {% endcomment %}
       <th scope="col">Mobile Number</th>
       <th scope="col">City</th>
       <th scope="col">Approved Status</th>
@@ -27,7 +25,7 @@
     </tr>
   </thead>
   <tbody>
-    {% for job in videsh_job_posts %}
+    {% for job in job_posts %}
     <tr>
       <th scope="row">{{ job.id }}</th>
       <td>{{ job.created_at|date:"d-m-Y" }}</td>
@@ -42,17 +40,17 @@
     <td class="text-center">&#10008;</td>
     {% endif %}
       <td>
-        <a href="{% url 'job:job_post_update' job.pk %}" class="btn btn-warning btn-sm mb-2">Edit</a>
-        <form action="{% url "job:delete_post" job.id %}" method="post" >
+        <a href="{% url 'job:update_videsh_job_post' job.pk %}" class="btn btn-warning btn-sm mb-2">Edit</a>
+        <form action="{% url 'job:delete_videsh_job_post' job.pk %}" method="post" >
           {% csrf_token %}
-            <input type="submit"
-              class="btn btn-danger btn-sm" value="Delete">
-           
+          <input type="submit" class="btn btn-danger btn-sm" value="Delete">
         </form>
       </td>
       
       {% endfor %}
     </tr>
+    
+      
   </tbody>
 </table>
 {% endblock page_content %}
