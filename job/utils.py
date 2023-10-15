@@ -35,19 +35,7 @@ class JobCategoryUpdateView(UpdateView):
 
 
 
-def show_carousel_slider(request):
-    sliders = CarouselSlider.objects.all()
-    context = {
-        'sliders':sliders
-    }
-    return render(request, "job/carousel_sliders.html", context)
 
-
-class CarouselSliderCreateView(CreateView):
-    form_class = AddSliderForm
-    model = CarouselSlider
-    template_name = "job/add_sliders.html"
-    success_url = reverse_lazy('job:sliders')
 
 
 

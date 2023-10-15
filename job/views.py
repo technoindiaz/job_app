@@ -1,11 +1,13 @@
 from django.shortcuts import render
-from .models import JobPost, VideshJobPost, NormalJobPost
-from .forms import NormalJobPostForm
+from .models import JobPost, VideshJobPost, NormalJobPost, CarouselSlider, ClientAdPhotos
+from .forms import NormalJobPostForm, AddSliderForm, CarouselSliderForm, ClientAdPhotosForm
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth  import authenticate,  login, logout
+from django.views.generic import CreateView, ListView,UpdateView, DeleteView
+from django.urls import reverse_lazy
 
 # Create your views here.
 
@@ -31,7 +33,6 @@ def Register(request):
 
 
 
-
 def Login(request):
     if request.method=="POST":
         username = request.POST['username']
@@ -48,6 +49,7 @@ def Login(request):
         return render(request, "job/accounts/login.html")
         # return render(request, 'blog.html')   
     return render(request, "job/accounts/login.html")
+
 
 def Logout(request):
     logout(request)
@@ -194,3 +196,58 @@ def delete_normal_job_post(request, pk):
 def show_hospital_jobs(request):
     hospital_jobs = NormalJobPost.objects.filter(job_category='HS')
     return render(request, 'job/hospital_jobs.html', {'hospital_jobs': hospital_jobs})
+
+
+
+
+def show_carousel_slider(request):
+    sliders = CarouselSlider.objects.all()
+    context = {
+        'sliders':sliders
+    }
+    return render(request, "job/carousel_sliders.html", context)
+
+
+class CarouselSliderCreateView(CreateView):
+    form_class = AddSliderForm
+    model = CarouselSlider
+    template_name = "job/add_sliders.html"
+    success_url = reverse_lazy('job:sliders')
+
+
+class CarouselSliderUpdate(UpdateView):
+    model = CarouselSlider
+    form_class = CarouselSliderForm
+    template_name = 'job/update_carousel.html'
+    success_url = reverse_lazy('job:sliders')
+
+class CarouselSliderDelete(DeleteView):
+    model = CarouselSlider
+    # template_name = 'yourapp/carouselslider_confirm_delete.html'
+    success_url = reverse_lazy('job:sliders')
+
+
+
+class ClientAdPhotosList(ListView):
+    model = ClientAdPhotos
+    template_name = 'job/clientadphotos_list.html'
+    context_object_name = 'ad_photos'
+
+
+class ClientAdPhotosCreate(CreateView):
+    model = ClientAdPhotos
+    form_class = ClientAdPhotosForm
+    template_name = 'job/clientadphotos_form.html'
+    success_url = reverse_lazy('job:ad_photo_list')
+
+
+class ClientAdPhotosUpdate(UpdateView):
+    model = ClientAdPhotos
+    form_class = ClientAdPhotosForm
+    template_name = 'job/clientadphotos_form.html'
+    success_url = reverse_lazy('job:ad_photo_list')
+
+class ClientAdPhotosDelete(DeleteView):
+    model = ClientAdPhotos
+    template_name = 'job/clientadphotos_confirm_delete.html'
+    success_url = reverse_lazy('job:ad_photo_list')

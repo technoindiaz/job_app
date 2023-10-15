@@ -32,14 +32,14 @@ Carousel Photos
       <td><img src="{{ slider.image2.url }}" style="width:120px; height:50px;" alt="{{job.post_name}}"></td>
       <td><img src="{{ slider.image3.url }}" style="width:120px; height:50px;" alt="{{job.post_name}}"></td>
       <td>
-        <a href="#" class="btn btn-warning btn-sm mb-2">Edit</a>
-        <form action="#" method="post">
-          {% csrf_token %}
-            <input type="submit"
-              class="btn btn-danger btn-sm" value="Delete">
-           
-        </form>
-    </td>
+        <a href="{% url 'job:slider_update' slider.pk %}" class="btn btn-warning btn-sm mb-2">Edit</a>
+        <form action="{% url "job:slider_delete" slider.pk %}" method="post" >
+            {% csrf_token %}
+              <input type="submit"
+                class="btn btn-danger btn-sm" value="Delete">
+             
+          </form>
+      </td>
     {% endfor %}
     </tr>
     

@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import JobPost, JobCategory, CarouselSlider, VideshJobPost, NormalJobPost
+from .models import ClientAdPhotos, JobPost, JobCategory, CarouselSlider, VideshJobPost, NormalJobPost
 
 class JobPostSerializer(serializers.ModelSerializer):
     class Meta:
@@ -28,7 +28,7 @@ class CarouselSerializer(serializers.ModelSerializer):
 class VideshJobPostSerializer(serializers.ModelSerializer):
     class Meta:
         model = VideshJobPost
-        fields = ['job_category', 'post_name', 'post_image', 'whatsapp_phone', 'mobile_phone', 'website', 'city', 'post_description', 'is_approved', 'is_active', 'created_at']
+        fields = '__all__'
 
 
 class NormalJobPostSerializer(serializers.ModelSerializer):
@@ -36,4 +36,14 @@ class NormalJobPostSerializer(serializers.ModelSerializer):
         model = NormalJobPost
         fields = '__all__'
 
-        
+
+class CarouselSliderSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CarouselSlider
+        fields = ['image1', 'image2', 'image3']
+
+
+class ClientAdPhotosSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ClientAdPhotos
+        fields = ['ad_image1', 'ad_image2']

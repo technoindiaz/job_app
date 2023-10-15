@@ -32,8 +32,15 @@ urlpatterns = [
     path('delete_normal_job_post/<int:pk>/', views.delete_normal_job_post, name='delete_normal_job_post'),
     path('show_hospital_jobs', views.show_hospital_jobs, name='show_hospital_jobs'),
     path('create_normal_job_post', views.create_normal_job_post, name='create_normal_job_post'),
+    path('sliders', views.show_carousel_slider, name='sliders'),
+    path('add_sliders', views.CarouselSliderCreateView.as_view(), name='add_sliders'),
+    path('slider_update/<int:pk>/', views.CarouselSliderUpdate.as_view(), name='slider_update'),
+    path('slider_delete/<int:pk>/', views.CarouselSliderDelete.as_view(), name='slider_delete'),
     
-    
+    path('ad_photo_list', views.ClientAdPhotosList.as_view(), name='ad_photo_list'),
+    path('ad_photos_create/', views.ClientAdPhotosCreate.as_view(), name='ad_photos_create'),
+    path('ad_photos_update/<int:pk>/', views.ClientAdPhotosUpdate.as_view(), name='ad_photos_update'),
+    path('ad_photos_delete/<int:pk>/', views.ClientAdPhotosDelete.as_view(), name='ad_photos_delete'),
 
 
     #===================APIS URLS==================
@@ -53,6 +60,8 @@ urlpatterns = [
     path('api/normal-job-posts/<int:pk>/', serializerviews.normal_job_post_detail, name='normal-job-post-detail'),
     path('api/desh_me_job/', serializerviews.DeshMeJobPostList.as_view(), name='desh-me-job-list'),
     path('api/hospital_me_job/', serializerviews.HosptialMeJobPostList.as_view(), name='hospital-me-job-list'),
+    path('api/carousel/', serializerviews.CarouselSliderList.as_view(), name='carousel'),
+    path('api/adphotos/', serializerviews.ClientAdPhotosList.as_view(), name='adphotos'),
     
 ]   
 
@@ -89,7 +98,7 @@ urlpatterns = [
 
 
 
-# path('job/create/', views.create_job_post, name='create_job_post'),
+    # path('job/create/', views.create_job_post, name='create_job_post'),
     # path('create_job_post', views.CreateJobPost.as_view(), name='create_job_post'),
     # path('job_post/<int:pk>/update/', views.JobPostUpdateView.as_view(), name='job_post_update'),
     

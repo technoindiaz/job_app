@@ -1,0 +1,54 @@
+{% extends "job/base.html" %}
+
+{% block page_heading %}
+Mobile Ad Photos
+{% endblock page_heading %}
+
+{% block page_button %}
+<a href="{% url "job:ad_photos_create" %}"><button type="button" class="btn btn-primary"><i class="bi bi-plus"></i></i>Create Ads</button></a>
+{% endblock page_button %}
+
+
+{% block page_content %}
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Date</th>
+      <th scope="col">Client Name</th>
+      <th scope="col">Ad Type</th>
+      <th scope="col">Thumbnail</th>
+      <th scope="col">Thumbnail</th>
+      <th scope="col">Price</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for ad_photo in ad_photos %}
+    <tr>
+      <th scope="row">{{ ad_photo.id }}</th>
+      <td>{{ ad_photo.created_at|date:"d-m-Y" }}</td>
+      <td><a href="#">{{ ad_photo.client_name }}</a></td>
+      <td>{{ ad_photo.ad_type }}</td>
+      {% if ad_photo.ad_image1 %}
+      <td><img src="{{ ad_photo.ad_image1.url }}" style="width:80px; height:50px;" alt="{{job.post_name}}"></td>
+        {% endif %}
+      {% if ad_photo.ad_image2 %}
+      <td><img src="{{ ad_photo.ad_image2.url }}" style="width:80px; height:50px;" alt="{{job.post_name}}"></td>
+        {% endif %}
+      <td>{{ ad_photo.ad_price }}</td>
+      <td>
+        <a href="{% url 'job:ad_photos_update' ad_photo.pk %}" class="btn btn-warning btn-sm mb-2">Edit</a>
+        <form action="{% url "job:ad_photos_delete" ad_photo.pk %}" method="post" >
+            {% csrf_token %}
+              <input type="submit"
+                class="btn btn-danger btn-sm" value="Delete">
+          </form>
+      </td>
+    {% endfor %}
+    </tr>
+    
+      
+  </tbody>
+</table>
+{% endblock page_content %}

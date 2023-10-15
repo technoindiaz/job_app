@@ -74,8 +74,9 @@ class VideshJobPost(models.Model):
     job_category = models.CharField(choices= VIDESH_JOB_CATEGORY, max_length=100, null=True, blank=True)
     post_name = models.CharField(max_length=200)
     post_image = models.ImageField(upload_to='job_posts', validators=[validate_image_size])
+    mobile_phone1 = models.IntegerField()
+    mobile_phone2 = models.IntegerField(blank=True, null=True)
     whatsapp_phone = models.IntegerField(blank=True, null=True)
-    mobile_phone = models.IntegerField()
     website = models.URLField(blank=True, null=True)
     city = models.CharField(max_length=100)
     post_description = models.TextField()
@@ -101,8 +102,9 @@ class NormalJobPost(models.Model):
     job_category = models.CharField(choices= NORMAL_JOB_CATEGORY, max_length=100, null=True, blank=True)
     post_name = models.CharField(max_length=200)
     post_image = models.ImageField(upload_to='job_posts', validators=[validate_image_size])
+    mobile_phone1 = models.IntegerField()
+    mobile_phone2 = models.IntegerField(blank=True, null=True)
     whatsapp_phone = models.IntegerField(blank=True, null=True)
-    mobile_phone = models.IntegerField()
     website = models.URLField(blank=True, null=True)
     city = models.CharField(max_length=100)
     post_description = models.TextField()
@@ -129,15 +131,13 @@ class CarouselSlider(models.Model):
         return self.name
 
 
-class AdPhotos(models.Model):
+class ClientAdPhotos(models.Model):
     id = models.AutoField(primary_key=True)
     client_name = models.CharField(max_length=200)
     ad_type = models.CharField(max_length=100)
     ad_name = models.CharField(max_length=100)
     ad_image1 = models.ImageField(upload_to='ad_images', blank=True, null=True)
     ad_image2 = models.ImageField(upload_to='ad_images', blank=True, null=True)
-    ad_image3 = models.ImageField(upload_to='ad_images', blank=True, null=True)
-    ad_image4 = models.ImageField(upload_to='ad_images', blank=True, null=True)
     ad_price = models.PositiveIntegerField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
