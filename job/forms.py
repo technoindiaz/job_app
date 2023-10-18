@@ -97,13 +97,14 @@ class NormalJobPostForm(forms.ModelForm):
 class CarouselSliderForm(forms.ModelForm):
     class Meta:
         model = CarouselSlider
-        fields = ['name', 'image1', 'image2', 'image3']
+        fields = '__all__'
 
         widgets = {
             'name': forms.TextInput(attrs={'class': 'form-control'}),
             'image1': forms.FileInput(attrs={'class':'form-control'}),
             'image2': forms.FileInput(attrs={'class':'form-control'}),
             'image3': forms.FileInput(attrs={'class':'form-control'}),
+            'is_active':forms.CheckboxInput(attrs={'class': 'form-check-input'}),
                 } 
         
 

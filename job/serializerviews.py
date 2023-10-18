@@ -141,11 +141,11 @@ class HosptialMeJobPostList(generics.ListAPIView):
 
 
 class CarouselSliderList(generics.ListAPIView):
-    queryset = CarouselSlider.objects.all()
+    queryset = CarouselSlider.objects.filter(is_active=True)
     serializer_class = CarouselSliderSerializer
 
 
 
 class ClientAdPhotosList(generics.ListAPIView):
-    queryset = ClientAdPhotos.objects.all()
+    queryset = ClientAdPhotos.objects.filter(is_active=True)
     serializer_class = ClientAdPhotosSerializer

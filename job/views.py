@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import JobPost, VideshJobPost, NormalJobPost, CarouselSlider, ClientAdPhotos
+from .models import JobPost, VideshJobPost, NormalJobPost, CarouselSlider, ClientAdPhotos, Terms_and_conditions
 from .forms import NormalJobPostForm, AddSliderForm, CarouselSliderForm, ClientAdPhotosForm
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
@@ -8,6 +8,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth  import authenticate,  login, logout
 from django.views.generic import CreateView, ListView,UpdateView, DeleteView
 from django.urls import reverse_lazy
+from django.urls import reverse
 
 # Create your views here.
 
@@ -251,3 +252,34 @@ class ClientAdPhotosDelete(DeleteView):
     model = ClientAdPhotos
     template_name = 'job/clientadphotos_confirm_delete.html'
     success_url = reverse_lazy('job:ad_photo_list')
+
+
+class TermsAndConditionsListView(ListView):
+    model = Terms_and_conditions
+    template_name = 'job/terms_and_conditions.html'
+    context_object_name = 'terms_and_conditions'
+
+
+
+class TermsAndConditionsCreateView(CreateView):
+    model = Terms_and_conditions
+    template_name = 'terms_and_conditions_form.html'
+    fields = ['matter']
+
+    def get_success_url(self):
+        return reverse('terms_and_conditions_list')
+
+class TermsAndConditionsUpdateView(UpdateView):
+    model = Terms_and_conditions
+    template_name = 'terms_and_conditions_form.html'
+    fields = ['matter']
+
+    def get_success_url(self):
+        return reverse('terms_and_conditions_list')
+
+class TermsAndConditionsDeleteView(DeleteView):
+    model = Terms_and_conditions
+    template_name = 'terms_and_conditions_confirm_delete.html'
+
+    def get_success_url(self):
+        return reverse('terms_and_conditions_list')

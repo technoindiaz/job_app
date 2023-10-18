@@ -13,13 +13,17 @@ class JobCategoryAdmin(admin.ModelAdmin):
 
 @admin.register(VideshJobPost)
 class VideshJobPostAdmin(admin.ModelAdmin):
-    list_display = ['post_name', 'job_category','post_image', 'mobile_phone1', 'mobile_phone2', 'whatsapp_phone', 'website', 'city', 'post_description', 'is_approved', 'is_active','created_at', 'updated_at']
+    list_display = ['post_name', 'job_category','post_image', 'mobile_phone1', 'mobile_phone2', 'whatsapp_phone', 'city', 'post_description', 'is_approved', 'is_active','created_at', 'updated_at']
 
 @admin.register(NormalJobPost)
 class NormalJobPostAdmin(admin.ModelAdmin):
-    list_display = ['post_name', 'job_category','post_image', 'mobile_phone1', 'mobile_phone2','whatsapp_phone', 'website', 'city', 'post_description', 'is_approved', 'is_active','created_at', 'updated_at']
+    list_display = ['post_name', 'job_category','post_image', 'mobile_phone1', 'mobile_phone2', 'whatsapp_phone',  'city', 'post_description', 'is_approved', 'is_active','created_at', 'updated_at']
 
 
 
-admin.site.register(CarouselSlider)
+@admin.register(CarouselSlider)
+class CarouselSliderAdmin(admin.ModelAdmin):
+    list_display = ['name', 'image1', 'image2', 'image3', 'is_active', 'created_at']
+
 admin.site.register(ClientAdPhotos)
+admin.site.register(Terms_and_conditions)

@@ -77,7 +77,7 @@ class VideshJobPost(models.Model):
     mobile_phone1 = models.IntegerField()
     mobile_phone2 = models.IntegerField(blank=True, null=True)
     whatsapp_phone = models.IntegerField(blank=True, null=True)
-    website = models.URLField(blank=True, null=True)
+    # website = models.URLField(blank=True, null=True)
     city = models.CharField(max_length=100)
     post_description = models.TextField()
     is_approved = models.BooleanField(default=False, null=True, blank=True)
@@ -105,7 +105,7 @@ class NormalJobPost(models.Model):
     mobile_phone1 = models.IntegerField()
     mobile_phone2 = models.IntegerField(blank=True, null=True)
     whatsapp_phone = models.IntegerField(blank=True, null=True)
-    website = models.URLField(blank=True, null=True)
+    # website = models.URLField(blank=True, null=True)
     city = models.CharField(max_length=100)
     post_description = models.TextField()
     is_approved = models.BooleanField(default=False, null=True, blank=True)
@@ -123,6 +123,7 @@ class CarouselSlider(models.Model):
     image1 = models.ImageField(upload_to='home_sliders', null=True, blank=True)
     image2 = models.ImageField(upload_to='home_sliders', null=True, blank=True)
     image3 = models.ImageField(upload_to='home_sliders', blank=True, null=True)
+    is_active = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -139,9 +140,18 @@ class ClientAdPhotos(models.Model):
     ad_image1 = models.ImageField(upload_to='ad_images', blank=True, null=True)
     ad_image2 = models.ImageField(upload_to='ad_images', blank=True, null=True)
     ad_price = models.PositiveIntegerField(blank=True, null=True)
+    is_active = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     
     def __str__(self):
         return self.client_name
 
+
+class Terms_and_conditions(models.Model):
+    matter = models.TextField(_("Please Write App terms & conditions here"))
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.matter

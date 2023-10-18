@@ -41,6 +41,10 @@ urlpatterns = [
     path('ad_photos_create/', views.ClientAdPhotosCreate.as_view(), name='ad_photos_create'),
     path('ad_photos_update/<int:pk>/', views.ClientAdPhotosUpdate.as_view(), name='ad_photos_update'),
     path('ad_photos_delete/<int:pk>/', views.ClientAdPhotosDelete.as_view(), name='ad_photos_delete'),
+    path('terms_and_conditions', views.TermsAndConditionsListView.as_view(), name='terms_and_conditions'),
+    path('terms_and_conditions_create', views.TermsAndConditionsCreateView.as_view(), name='terms_and_conditions_create'),
+    path('terms_and_conditions_update/<int:pk>/', views.TermsAndConditionsUpdateView.as_view(), name='terms_and_conditions_update'),
+    path('terms_and_conditions_delete/<int:pk>/', views.TermsAndConditionsDeleteView.as_view(), name='terms_and_conditions_delete'),
 
 
     #===================APIS URLS==================
