@@ -66,6 +66,7 @@ urlpatterns = [
     path('api/hospital_me_job/', serializerviews.HosptialMeJobPostList.as_view(), name='hospital-me-job-list'),
     path('api/carousel/', serializerviews.CarouselSliderList.as_view(), name='carousel'),
     path('api/adphotos/', serializerviews.ClientAdPhotosList.as_view(), name='adphotos'),
+    path('api/terms', serializerviews.TermsAndConditionsList.as_view(), name='terms'),
     
 ]   
 

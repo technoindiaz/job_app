@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import ClientAdPhotos, JobPost, JobCategory, CarouselSlider, VideshJobPost, NormalJobPost
+from .models import ClientAdPhotos, JobPost, JobCategory, CarouselSlider, VideshJobPost, NormalJobPost, Terms_and_conditions
 
 class JobPostSerializer(serializers.ModelSerializer):
     class Meta:
@@ -47,3 +47,11 @@ class ClientAdPhotosSerializer(serializers.ModelSerializer):
     class Meta:
         model = ClientAdPhotos
         fields = ['ad_image1', 'ad_image2']
+
+
+
+class TermsAndConditionsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Terms_and_conditions
+        fields = ['matter']
+        

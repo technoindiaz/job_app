@@ -1,11 +1,11 @@
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.generics import ListAPIView
-from .models import ClientAdPhotos, JobPost, CarouselSlider, JobCategory, VideshJobPost, NormalJobPost
+from .models import ClientAdPhotos, JobPost, CarouselSlider, JobCategory, VideshJobPost, NormalJobPost, Terms_and_conditions
 from rest_framework import generics
 from rest_framework import permissions
 from rest_framework.decorators import api_view, permission_classes
-from .serializers import CarouselSerializer, CarouselSliderSerializer, ClientAdPhotosSerializer, JobPostSerializer, JobCategorySerialzer, VideshJobPostSerializer, NormalJobPostSerializer
+from .serializers import CarouselSerializer, CarouselSliderSerializer, ClientAdPhotosSerializer, JobPostSerializer, JobCategorySerialzer, TermsAndConditionsSerializer, VideshJobPostSerializer, NormalJobPostSerializer
 
 
 class JobCategoryListCreateView(generics.ListCreateAPIView):
@@ -149,3 +149,8 @@ class CarouselSliderList(generics.ListAPIView):
 class ClientAdPhotosList(generics.ListAPIView):
     queryset = ClientAdPhotos.objects.filter(is_active=True)
     serializer_class = ClientAdPhotosSerializer
+
+
+class TermsAndConditionsList(generics.ListAPIView):
+    queryset = Terms_and_conditions.objects.all()
+    serializer_class = TermsAndConditionsSerializer
