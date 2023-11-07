@@ -36,7 +36,7 @@ STATIC_URL = "/static/"
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 
-ALLOWED_HOSTS = ['*', 'technoindiaz.pythonanywhere.com']
+ALLOWED_HOSTS = ['*', 'technoindiaz.pythonanywhere.com', 'workze.in', 'www.workzen.in']
 
 
 # Application definition
@@ -100,9 +100,9 @@ WSGI_APPLICATION = 'job_app.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'workzendatabase',
-        'USER': 'dbadmin',
-        'PASSWORD': '12345',
+        'NAME': 'worknjde_workzendatabase',
+        'USER': 'worknjde_dbadmin',
+        'PASSWORD': 'eh8}mvYaGKbY',
         'HOST': 'localhost',
         'PORT': '3306',
     }
