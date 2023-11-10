@@ -36,7 +36,7 @@ STATIC_URL = "/static/"
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 
-ALLOWED_HOSTS = ['*', 'technoindiaz.pythonanywhere.com', 'workze.in', 'www.workzen.in']
+ALLOWED_HOSTS = ['*', 'technoindiaz.pythonanywhere.com', 'workzen.in', 'www.workzen.in']
 
 
 # Application definition
@@ -89,24 +89,24 @@ WSGI_APPLICATION = 'job_app.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
-# Connecting MySQL database
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'worknjde_workzendatabase',
-        'USER': 'worknjde_dbadmin',
-        'PASSWORD': 'eh8}mvYaGKbY',
-        'HOST': 'localhost',
-        'PORT': '3306',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+# Connecting MySQL database
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'worknjde_workzendatabase',
+#         'USER': 'worknjde_dbadmin',
+#         'PASSWORD': 'eh8}mvYaGKbY',
+#         'HOST': 'localhost',
+#         'PORT': '3306',
+#     }
+# }
 
 
 
@@ -136,7 +136,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/kolkata'
 
 USE_I18N = True
 
@@ -164,7 +164,8 @@ LOGIN_REDIRECT_URL = '/dashboard/'
 
 CORS_ALLOWED_ORIGINS = [
     'http://127.0.0.1:58646', 
-    'https://technoindiaz.pythonanywhere.com', 
+    'https://technoindiaz.pythonanywhere.com',
+    'https://workzen.in' 
 ]
 
 CORS_ALLOW_ALL_ORIGINS = True
