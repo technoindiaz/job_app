@@ -283,3 +283,8 @@ class TermsAndConditionsDeleteView(DeleteView):
 
     def get_success_url(self):
         return reverse('terms_and_conditions_list')
+    
+
+
+def privacy_policy(request):
+    return render(request, "job/workzen_privacy_policy.html")

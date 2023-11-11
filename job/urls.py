@@ -45,6 +45,7 @@ urlpatterns = [
     path('terms_and_conditions_create', views.TermsAndConditionsCreateView.as_view(), name='terms_and_conditions_create'),
     path('terms_and_conditions_update/<int:pk>/', views.TermsAndConditionsUpdateView.as_view(), name='terms_and_conditions_update'),
     path('terms_and_conditions_delete/<int:pk>/', views.TermsAndConditionsDeleteView.as_view(), name='terms_and_conditions_delete'),
+    path('privacy-policy', views.privacy_policy, name='privacy-policy'),
 
 
     #===================APIS URLS==================
